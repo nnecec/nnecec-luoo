@@ -1,9 +1,33 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React, { Component } from 'react';
+import { HashRouter as Router } from 'react-router-dom'
 
-import "./styles/main.css";
+import { Provider } from 'mobx-react';
+import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
+import createBrowserHistory from 'history/createBrowserHistory';
 
-render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('app')
-);
+import stores from './stores'
+import Root from './pages'
+
+const browserHistory = createBrowserHistory();
+const routingStore = new RouterStore();
+
+const ProviderStores = {
+  routing: routingStore,
+  ...stores
+}
+
+const history = syncHistoryWithStore(browserHistory, routingStore);
+
+class App extends Component {
+  render() {
+    return (
+      <Provider {...ProviderStores}>
+        <Router>
+          <Root></Root>
+        </Router>
+      </Provider>
+    );
+  }
+}
+
+export default App;

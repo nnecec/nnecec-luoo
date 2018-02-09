@@ -12,7 +12,8 @@ module.exports = env => {
     externals: [nodeExternals()],
     resolve: {
       alias: {
-        env: path.resolve(__dirname, `../config/env_${env}.json`)
+        env: path.resolve(__dirname, `../config/env_${env}.json`),
+        components: path.resolve(__dirname, `../src/components`),
       }
     },
     devtool: "source-map",
@@ -26,6 +27,10 @@ module.exports = env => {
         {
           test: /\.css$/,
           use: ["style-loader", "css-loader"]
+        },
+        {
+          test: /.(png|woff|woff2|eot|ttf|svg)$/,
+          use: ['url-loader']
         }
       ]
     },
