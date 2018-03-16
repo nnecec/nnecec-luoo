@@ -4,6 +4,7 @@ const base = require("./webpack.base.config");
 
 module.exports = env => {
   return merge(base(env), {
+    mode: env,
     entry: {
       background: "./src/background.js",
       app: "./src/index.js"
