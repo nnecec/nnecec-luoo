@@ -14,7 +14,7 @@ class Nav extends Component {
         <Components.Nav>
           <Title>落</Title>
           <Item icon="home"><Link to="/">主页</Link></Item>
-          <Item icon="music"><Link to="/music">期刊</Link></Item>
+          <Item icon="music"><Link to="/tag/1">期刊</Link></Item>
           <Item icon="note"><Link to="/musician">单曲</Link></Item>
           <Item icon="doc-text-inv"><Link to="/essay">专栏</Link></Item>
         </Components.Nav>
