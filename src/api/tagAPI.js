@@ -1,3 +1,5 @@
 import { get } from '../utils/axios'
 
-export fetchTagList = get('/tag/list')
+
+
+export const fetchTagList = (params) => get('/tag/list', params)

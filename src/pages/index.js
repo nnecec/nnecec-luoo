@@ -27,7 +27,7 @@ class Root extends Component {
           <Content>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/tag/:page" component={Music} />
+              <Route exact path="/music/:tag/:page" component={Music} />
               <Route exact path="/musician" component={Musician} />
               <Route exact path="/essay" component={Essay} />
             </Switch>
