@@ -1,0 +1,51 @@
+.luoo-vol-list {
+  padding: 60px;
+
+  .luoo-vol-item {
+    height: 500px;
+    margin-bottom: 60px;
+    box-shadow: rgba(34, 48, 64, 0.8) 0px 8px 40px 0px;
+    position: relative;
+
+    .luoo-vol-item-desc {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 60px;
+      bottom: 40px;
+      padding: 10px 20px 10px 10px;
+      background-color: rgba(255, 255, 255, 0.75);
+
+      .description {
+        font-style: italic;
+        color: #333;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .count {
+        position: absolute;
+        right: 20px;
+        bottom: 10px;
+
+        span {
+          margin: 0 2px;
+        }
+      }
+    }
+
+    .luoo-vol-item-figure {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -2;
+      background-size: cover;
+      background-origin: 50% 50%;
+    }
+  }
+}

@@ -1,7 +1,9 @@
-import commonStore from './commonStore';
-import tagStore from './TagStore';
+import commonStore from './commonStore'
+import tagStore from './TagStore'
+import volStore from './VolStore'
 
 export default {
   commonStore,
-  tagStore
-};
+  tagStore,
+  volStore,
+}
