@@ -10,14 +10,16 @@ import Home from './Home'
 import Music from './Music/Music'
 import Musician from './Musician'
 import Essay from './Essay'
+import VolDetail from './Music/VolDetail';
 
 import '../styles/photon.css'
 import '../styles/main.scss'
 
 @inject('routing')
-@observer
 @withRouter
+@observer
 class Root extends Component {
+
   render() {
     const { location } = this.props
 
@@ -30,9 +32,10 @@ class Root extends Component {
             <Content>
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/music/:tag/:page" component={Music} />
-                <Route exact path="/musician" component={Musician} />
-                <Route exact path="/essay" component={Essay} />
+                <Route path="/music/:tag/:page" component={Music} />
+                <Route exact path="/vol/:id" component={VolDetail} />
+                <Route path="/musician" component={Musician} />
+                <Route path="/essay" component={Essay} />
               </Switch>
             </Content>
           </div>

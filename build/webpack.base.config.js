@@ -1,5 +1,6 @@
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
+var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 // const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
@@ -39,6 +40,7 @@ module.exports = env => {
       ]
     },
     plugins: [
+      new FriendlyErrorsWebpackPlugin(),
       // new ExtractTextPlugin({
       //   filename: "style.css",
       //   disable: process.env.NODE_ENV === "development"

@@ -13,6 +13,7 @@ import VolList from './VolList'
   fetchTagList: stores.tagStore.fetchTagList,
   fetchVolList: stores.volStore.fetchVolList,
 }))
+@withRouter
 @observer
 class Music extends Component {
   constructor(props) {
