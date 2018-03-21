@@ -78,6 +78,8 @@ export default (name, options) => {
 
   win = new BrowserWindow(Object.assign({}, options, state));
 
+  require('electron-reload')(__dirname);
+
   win.on("close", saveState);
 
   return win;

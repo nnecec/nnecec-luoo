@@ -8,7 +8,6 @@ class VolStore {
     try {
       const volList = await volAPI.fetchVolList(params)
       runInAction(() => {
-        console.log(volList)
         this.volList = volList.data
       })
     } catch (error) {

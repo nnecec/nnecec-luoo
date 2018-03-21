@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 
-class VolList extends Component {
+class VolDetail extends Component {
   constructor(props) {
     super(props)
   }
@@ -41,4 +41,4 @@ class VolList extends Component {
   }
 }
 
-export default VolList;
+export default VolDetail;

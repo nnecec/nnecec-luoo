@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
-import 'normalize.css'
 
 
 import Header from './Header/index'

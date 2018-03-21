@@ -4,7 +4,7 @@
   .luoo-vol-item {
     height: 500px;
     margin-bottom: 60px;
-    box-shadow: rgba(34, 48, 64, 0.8) 0px 8px 40px 0px;
+    box-shadow: 0 18px 64px 0 rgba(0, 0, 0, 0.5);
     position: relative;
 
     .luoo-vol-item-desc {
@@ -24,6 +24,9 @@
       h2 {
         font-size: 24px;
         margin-bottom: 10px;
+        .title-vol{
+          font-size: 12px;
+        }
       }
 
       .count {
