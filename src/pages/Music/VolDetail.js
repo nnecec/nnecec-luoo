@@ -19,6 +19,8 @@ class VolDetail extends Component {
 
   componentDidMount() {
     this.fetchVolDetail()
+    console.log(global);
+
   }
 
   fetchVolDetail = () => {
@@ -34,21 +36,31 @@ class VolDetail extends Component {
     const bg = volDetail.swatches && (volDetail.swatches.LightVibrant || volDetail.swatches.LightMuted)
     const color = volDetail.swatches && (volDetail.swatches.DarkVibrant || volDetail.swatches.DarkMuted)
 
+    const list = volDetail.musicList
+
     return (
-      <div className="luoo-vol-detail" style={{ backgroundColor: `rgb(${bg})` }}>
-        <div className="vol-desc" style={{ color: `rgb(${color})` }}>
-          <h2>{volDetail.title}<span className="title-vol">vol.{volDetail.id}</span></h2>
-          <p dangerouslySetInnerHTML={{ __html: volDetail.description }} className="description" />
+      <div className="luoo-vol-detail" style={{ backgroundColor: `rgb(${bg})`, color: `rgb(${color})` }}>
 
-          {/*<p className="count">
-        <span><span className="icon icon-comment"></span>{volDetail.comments}</span>
-        <span><span className="icon icon-heart"></span>{volDetail.favs}</span></p>*/}
+        <div className="vol-info" style={{ backgroundImage: `url(${volDetail.img})` }}>
+          <div className="vol-title">
+            <h2>{volDetail.title}<span className="title-vol">vol.{volDetail.id}</span></h2>
+
+            {/*<p className="count">
+      <span><span className="icon icon-comment"></span>{volDetail.comments}</span>
+      <span><span className="icon icon-heart"></span>{volDetail.favs}</span></p>*/}
+          </div>
         </div>
-        <div className="music" style={{ backgroundImage: `url(${volDetail.img})` }}>
-        </div>
+        <div className="vol-music-list" style={{ backgroundColor: `rgb(${bg})` }}>
+          <div className="music-list">
+            <p dangerouslySetInnerHTML={{ __html: volDetail.description }} className="description" />
 
+            <ul className="list">
+              {
+                list && list.map(music => (<li>{music.song} - {music.artist}</li>))
+              }
+            </ul>
+          </div>
 
-        <div className="vol-music-list">
 
         </div>
       </div>
