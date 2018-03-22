@@ -25,7 +25,7 @@ class Root extends Component {
 
     return (
       <div style={{ height: '100%' }}>
-        <Header></Header>
+
         <div style={{ position: 'relative', height: '100%' }}>
           <div className="pane-group">
             <Nav></Nav>

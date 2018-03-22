@@ -1,7 +1,8 @@
-import { observable, action, reaction, runInAction } from 'mobx';
+import { observable, action, reaction, runInAction } from 'mobx'
 import * as volAPI from 'api/volAPI'
 class VolStore {
   @observable volList = []
+  @observable volDetail = {}
 
   @action
   fetchVolList = async (params) => {
@@ -14,6 +15,23 @@ class VolStore {
 
     }
   }
+
+  @action
+  fetchVolDetail = async (params) => {
+    try {
+      const volDetail = await volAPI.fetchVolDetail(params)
+      console.log(volDetail)
+
+      runInAction(() => {
+        this.volDetail = volDetail.data
+      })
+    } catch (error) {
+
+    }
+  }
+
+  @action
+  resetVolDetail = () => this.volDetail = {}
 }
 
-export default new VolStore();
+export default new VolStore()

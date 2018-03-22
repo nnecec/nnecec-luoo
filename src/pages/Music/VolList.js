@@ -6,7 +6,6 @@ import { Link, NavLink, withRouter } from 'react-router-dom';
 @inject(stores => ({
   routing: stores.routing,
 }))
-@withRouter
 @observer
 class VolList extends Component {
   constructor(props) {
@@ -21,11 +20,10 @@ class VolList extends Component {
 
     return volList.map((vol, index) => {
       return (
-        <Link to="/vol/1" key={index} >
+        <Link to={`/vol/${vol.index}`} key={index} >
           <div className="luoo-vol-item">
             <div className="luoo-vol-item-desc">
-              <p dangerouslySetInnerHTML={{ __html: vol.description }} className="description" />
-              <h2>{vol.title.split(' ')[1]} <span className="title-vol">{vol.title.split(' ')[0]}</span>  </h2>
+              <h2>{vol.title} <span className="title-vol">vol.{vol.id}</span></h2>
               <p className="count">
                 <span><span className="icon icon-comment"></span>{vol.comments}</span>
                 <span><span className="icon icon-heart"></span>{vol.favs}</span>

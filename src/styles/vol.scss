@@ -24,7 +24,8 @@
       h2 {
         font-size: 24px;
         margin-bottom: 10px;
-        .title-vol{
+
+        .title-vol {
           font-size: 12px;
         }
       }
@@ -49,6 +50,36 @@
       z-index: -2;
       background-size: cover;
       background-position: 50% 50%;
+    }
+  }
+}
+
+.luoo-vol-detail {
+  height: 100%;
+
+  .music {
+    width: 80%;
+    height: 60%;
+    position: relative;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: 50% 50%;
+
+    .vol-image {}
+
+    .vol-music-list {}
+  }
+
+  .vol-desc {
+    padding: 10px 20px 10px 10px;
+
+    h2 {
+      font-size: 24px;
+
+      .title-vol {
+        font-size: 12px;
+        margin-right: 10px;
+      }
     }
   }
 }
