@@ -19,8 +19,6 @@ class VolDetail extends Component {
 
   componentDidMount() {
     this.fetchVolDetail()
-    console.log(global);
-
   }
 
   fetchVolDetail = () => {
@@ -56,7 +54,7 @@ class VolDetail extends Component {
 
             <ul className="list">
               {
-                list && list.map(music => (<li>{music.song} - {music.artist}</li>))
+                list && list.map((music, index) => (<li key={index}>{music.song} - {music.artist}</li>))
               }
             </ul>
           </div>
