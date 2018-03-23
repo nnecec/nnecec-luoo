@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Title extends Component {
+class Content extends Component {
   render() {
     return (
-      <h5 className="nav-group-title">
+      <div className="content">
         {this.props.children}
-      </h5>
+      </div>
     );
   }
 }
 
-export default Title;
+export default Content;

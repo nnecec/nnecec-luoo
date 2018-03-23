@@ -1,0 +1,41 @@
+.luoo-header {
+  -webkit-app-region: drag;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: rgba(34, 48, 64, 0.8) 0px 8px 80px 0px;
+  z-index: 1000;
+
+  nav {
+    height: 100%;
+    display: grid;
+    align-items: center;
+  }
+
+  .logo {
+    padding: 0 20px;
+
+    a {
+      width: 40px;
+      display: inline-block;
+      font-size: 16px;
+    }
+  }
+
+  .link {
+    grid-template-columns: 60px 60px 60px 60px;
+
+    a {
+      display: inline-block;
+      margin-right: 20px;
+    }
+  }
+}

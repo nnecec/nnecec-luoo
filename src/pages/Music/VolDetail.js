@@ -39,18 +39,22 @@ class VolDetail extends Component {
     return (
       <div className="luoo-vol-detail" style={{ backgroundColor: `rgb(${bg})`, color: `rgb(${color})` }}>
 
-        <div className="vol-info" style={{ backgroundImage: `url(${volDetail.img})` }}>
+        <div className="vol-img" style={{ backgroundImage: `url(${volDetail.img})` }}></div>
+
+        <div className="vol-info">
           <div className="vol-title">
-            <h2>{volDetail.title}<span className="title-vol">vol.{volDetail.id}</span></h2>
+            <h2>{volDetail.title}<span className="title-vol number">vol.{volDetail.id}</span></h2>
 
             {/*<p className="count">
-      <span><span className="icon icon-comment"></span>{volDetail.comments}</span>
-      <span><span className="icon icon-heart"></span>{volDetail.favs}</span></p>*/}
+  <span><span className="icon icon-comment"></span>{volDetail.comments}</span>
+  <span><span className="icon icon-heart"></span>{volDetail.favs}</span></p>*/}
           </div>
-        </div>
-        <div className="vol-music-list" style={{ backgroundColor: `rgb(${bg})` }}>
-          <div className="music-list">
+
+          <div className="vol-desc">
             <p dangerouslySetInnerHTML={{ __html: volDetail.description }} className="description" />
+          </div>
+
+          <div className="music-list">
 
             <ul className="list">
               {
@@ -58,9 +62,8 @@ class VolDetail extends Component {
               }
             </ul>
           </div>
-
-
         </div>
+
       </div>
     );
   }
