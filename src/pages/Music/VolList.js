@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
-
+import { MessageCircle, Heart } from 'react-feather'
 
 @inject(stores => ({
   routing: stores.routing,
@@ -23,10 +23,10 @@ class VolList extends Component {
         <Link to={`/vol/${vol.index}`} key={index} >
           <div className="luoo-vol-item">
             <div className="luoo-vol-item-desc">
-              <h2>{vol.title} <span className="title-vol">vol.{vol.id}</span></h2>
+              <h2>{vol.title} <span className="title-vol number">vol.{vol.id}</span></h2>
               <p className="count">
-                <span><span className="icon icon-comment"></span>{vol.comments}</span>
-                <span><span className="icon icon-heart"></span>{vol.favs}</span>
+                <span className="number"><MessageCircle size={12} />{vol.comments}</span>
+                <span className="number"><Heart size={12} />{vol.favs}</span>
               </p>
             </div>
             <figure className="luoo-vol-item-figure" style={{ backgroundImage: `url(${vol.img})` }}></figure>

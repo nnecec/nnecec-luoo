@@ -12,6 +12,8 @@ import VolDetail from './Music/VolDetail';
 
 import '../styles/main.scss'
 
+
+
 @inject('routing')
 @withRouter
 @observer

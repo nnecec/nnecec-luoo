@@ -79,5 +79,11 @@ figure {
 
 .number {
   @include font-hei;
+
   font-weight: 400;
+
+  svg {
+    position: relative;
+    top: 2px;
+  }
 }
