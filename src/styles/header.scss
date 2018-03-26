@@ -18,6 +18,29 @@
     height: 100%;
     display: grid;
     align-items: center;
+
+    a {
+      &::after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        bottom: 4px;
+        left: 0;
+        transform: scale(0);
+        transform-origin: left;
+        background-color: #333;
+        transition: transform 0.24s ease;
+      }
+
+      &:hover {
+        &::after {
+          content: "";
+          transform: scale(1);
+        }
+      }
+    }
   }
 
   .logo {

@@ -15,4 +15,4 @@ Still in developing...
 - Electron
 - Axios
 
-All dependencies is up to date.
+All dependencies is up to date

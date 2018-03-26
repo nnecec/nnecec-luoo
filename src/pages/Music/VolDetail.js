@@ -10,6 +10,10 @@ import Loading from 'components/Loading'
   volDetailStyle: stores.volStore.volDetailStyle,
   isLoading: stores.volStore.isLoading,
 
+  // Player
+  setPlayList: stores.controllerStore.setPlayList,
+  play: stores.controllerStore.play,
+
   // function
   fetchVolDetail: stores.volStore.fetchVolDetail,
   resetVolDetail: stores.volStore.resetVolDetail,
@@ -29,11 +33,20 @@ class VolDetail extends Component {
     resetVolDetail()
   }
 
+  // 获取期刊详情
   fetchVolDetail = () => {
     const { routing, fetchVolDetail, resetVolDetail } = this.props
     const index = routing.location.hash.match(/\d+/)[0]
 
     fetchVolDetail({ index })
+  }
+
+  // 播放期刊列表
+  playVol = (id) => {
+    const { volDetail, setPlayList, play } = this.props
+
+    setPlayList(volDetail.musicList)
+    play(id)
   }
 
   render() {
@@ -63,7 +76,7 @@ class VolDetail extends Component {
 
             <ul className="list">
               {
-                list && list.map((music, index) => (<li key={index}>{music.song} - {music.artist}</li>))
+                list && list.map((music, index) => (<li key={index} onClick={() => this.playVol(music.id)}>{music.song} - {music.artist}</li>))
               }
             </ul>
           </div>
