@@ -1,0 +1,70 @@
+.luoo-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  color: #555;
+}
+
+.luoo-loading .loading-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.svg-wrapper {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  animation: 2s rotate infinite linear;
+  font-size: 30px;
+  vertical-align: middle;
+
+  circle {
+    fill: transparent;
+    stroke: #00abe4;
+    stroke-width: 0.07em;
+    stroke-dasharray: 2.3525em 0.4705em;
+    animation: 1.3s strokeDashArray infinite linear, 24s infinite linear;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes strokeDashArray {
+  from {
+    stroke-dasharray: 2.3525em 0.4705em;
+    stroke-dashoffset: 0;
+  }
+
+  10% {
+    stroke-dasharray: 2.3525em 0.4705em;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 0.001em 2.825em;
+    stroke-dashoffset: -2.826em;
+  }
+
+  60% {
+    stroke-dasharray: 0.001em 2.825em;
+  }
+
+  to {
+    stroke-dasharray: 2.3525em 0.4705em;
+    stroke-dashoffset: -2.826em;
+  }
+}

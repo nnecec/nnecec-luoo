@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import * as Components from 'components'
 
 class Header extends Component {
   render() {

@@ -4,8 +4,13 @@
   .luoo-vol-item {
     height: calc(100vh - 160px);
     margin-bottom: 80px;
-    box-shadow: 0 18px 36px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 2px -10px rgba(0, 0, 0, 0.4), 0 10px 10px 0 rgba(0, 0, 0, 0.3), 0 2px 10px 0 rgba(0, 0, 0, 0.25);
     position: relative;
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+
+    &:hover {
+      box-shadow: 0 10px 10px -6px rgba(0, 0, 0, 0.4), 0 16px 20px 2px rgba(0, 0, 0, 0.3), 0 6px 28px 4px rgba(0, 0, 0, 0.25);
+    }
 
     .luoo-vol-item-desc {
       position: absolute;
@@ -35,6 +40,7 @@
         right: 20px;
         bottom: 10px;
         font-size: 12px;
+
         span {
           margin: 0 2px;
         }
@@ -88,7 +94,7 @@
 
       p {
         span {
-          background-color: transparent !important
+          background-color: transparent !important;
         }
       }
     }

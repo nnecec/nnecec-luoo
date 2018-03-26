@@ -37,7 +37,9 @@ app.on("ready", () => {
     width: 800,
     height: 600,
     frame: false,
-    resizable: false
+    resizable: false,
+    defaultFontSize: 14,
+    scrollBounce: true,
   });
 
   mainWindow.loadURL(

@@ -3,13 +3,21 @@ import * as volAPI from 'api/volAPI'
 class VolStore {
   @observable volList = []
   @observable volDetail = {}
+  @observable volDetailStyle = {
+    bg: '#fff',
+    color: '#333'
+  }
+  @observable isLoading = false
 
   @action
   fetchVolList = async (params) => {
     try {
+      this.isLoading = true
       const volList = await volAPI.fetchVolList(params)
       runInAction(() => {
         this.volList = volList.data
+        this.isLoading = false
+
       })
     } catch (error) {
 
@@ -19,11 +27,16 @@ class VolStore {
   @action
   fetchVolDetail = async (params) => {
     try {
+      this.isLoading = true
       const volDetail = await volAPI.fetchVolDetail(params)
-      console.log(volDetail)
 
       runInAction(() => {
         this.volDetail = volDetail.data
+        this.isLoading = false
+
+        this.volDetailStyle.bg = this.volDetail.swatches && (this.volDetail.swatches.LightVibrant || this.volDetail.swatches.LightMuted)
+
+        this.volDetailStyle.color = this.volDetail.swatches && (this.volDetail.swatches.DarkVibrant || this.volDetail.swatches.DarkMuted)
       })
     } catch (error) {
 
@@ -31,7 +44,14 @@ class VolStore {
   }
 
   @action
-  resetVolDetail = () => this.volDetail = {}
+  resetVolDetail = () => {
+
+    this.volDetail = {}
+    this.volDetailStyle = {
+      bg: '#fff',
+      color: '#333'
+    }
+  }
 }
 
 export default new VolStore()

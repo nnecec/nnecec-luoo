@@ -27,7 +27,7 @@
     "pree2e": "webpack --config=build/webpack.app.config.js --env=test --display=none && webpack --config=build/webpack.e2e.config.js --env=test --display=none",
     "e2e": "mocha temp/e2e.js --require source-map-support/register",
     "test": "npm run unit && npm run e2e",
-    "start": "node build/start.js",
+    "start": "webpack-dashboard -- node build/start.js",
     "release": "npm test && webpack --config=build/webpack.app.config.js --env=production && electron-builder"
   },
   "dependencies": {
@@ -73,6 +73,7 @@
     "url-loader": "^1.0.1",
     "webpack": "^4.1.1",
     "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-dashboard": "^1.1.1",
     "webpack-merge": "^4.1.2",
     "webpack-node-externals": "^1.6.0"
   }

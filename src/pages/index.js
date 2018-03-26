@@ -12,12 +12,19 @@ import VolDetail from './Music/VolDetail';
 
 import '../styles/main.scss'
 
-
-
 @inject('routing')
 @withRouter
 @observer
 class Root extends Component {
+
+  componentDidMount() {
+    const { routing } = this.props
+    console.log(routing)
+    routing.history.listen((location, action) => {
+      console.log(location, action)
+      global.scrollTo(0, 0)
+    })
+  }
 
   render() {
     const { location } = this.props
