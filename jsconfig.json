@@ -1,5 +1,30 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true
-  }
+    "experimentalDecorators": true,
+    "baseUrl": "./src/",
+    "paths": {
+      "api/*": [
+        "./api/*"
+      ],
+      "components/*": [
+        "./components/*"
+      ],
+      "helpers/*": [
+        "./helpers/*"
+      ],
+      "pages/*": [
+        "./pages/*"
+      ],
+      "stores/*": [
+        "./stores/*"
+      ],
+      "utils/*": [
+        "./utils/*"
+      ],
+    }
+  },
+  "exclude": [
+    "app",
+    "node_modules"
+  ],
 }

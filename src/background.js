@@ -34,8 +34,8 @@ app.on("ready", () => {
   setApplicationMenu();
 
   const mainWindow = createWindow("main", {
-    width: 800,
-    height: 600,
+    width: 600,
+    height: 500,
     frame: false,
     resizable: false,
     defaultFontSize: 14,

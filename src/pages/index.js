@@ -3,6 +3,8 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 
 import Header from './Shared/Header'
+import Player from './Player/Player'
+
 import Content from './Shared/Content'
 import Home from './Home'
 import Music from './Music/Music'
@@ -41,6 +43,7 @@ class Root extends Component {
             <Route path="/essay" component={Essay} />
           </Switch>
         </Content>
+        <Player></Player>
       </div>
     )
   }
