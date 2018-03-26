@@ -34,9 +34,12 @@ app.on("ready", () => {
   setApplicationMenu();
 
   const mainWindow = createWindow("main", {
-    width: 1000,
+    width: 800,
     height: 600,
-    frame: false
+    frame: false,
+    resizable: false,
+    defaultFontSize: 14,
+    scrollBounce: true,
   });
 
   mainWindow.loadURL(
