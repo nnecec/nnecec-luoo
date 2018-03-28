@@ -43,6 +43,7 @@ export default class AudioPlayer extends Component {
 
   render() {
     const { music, next, volume } = this.props
+    console.log(music)
 
     return (
       <audio
@@ -61,7 +62,7 @@ export default class AudioPlayer extends Component {
           this.progress(e.target.currentTime);
         }}
         ref="player"
-        src={music.src || {}}
+        src={music && music.src ? music.src : ''}
         style={{ display: 'none' }} />
     );
   }

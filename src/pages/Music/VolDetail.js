@@ -45,7 +45,8 @@ class VolDetail extends Component {
   playVol = (id) => {
     const { volDetail, setPlayList, play } = this.props
 
-    setPlayList(volDetail.musicList)
+    setPlayList(volDetail.musicList.slice())
+    
     play(id)
   }
 
