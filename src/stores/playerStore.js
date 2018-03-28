@@ -4,21 +4,28 @@ import { ipcRenderer } from 'electron';
 
 import { PLAYLIST_PLAY_TYPE, PLAY_MODE } from 'utils/constant'
 
-class ControllerStore {
+class PlayerStore {
   @observable volume = 0.1;
+  @observable progress = 0;
 
   /**
    * 设置音量
-   * type - 添加/替换
    */
   @action
   setVolume = (percent) => {
-
     this.volume = percent
-
-
   }
+
+  /**
+   * 设置播放进度
+   */
+  @action
+  setProgress = (percent) => {
+    this.progress = percent
+  }
+  
+
 
 }
 
-export default new ControllerStore();
+export default new PlayerStore();

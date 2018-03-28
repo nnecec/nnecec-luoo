@@ -50,6 +50,7 @@ class ControllerStore {
   cut = async (pass) => {
     const currentIndex = this.playlist.findIndex(p => p.src === this.music.src)
     let nextIndex = currentIndex + pass
+
     if (nextIndex >= this.playlist.length) {
       nextIndex = 0
     } else if (nextIndex < 0) {
@@ -69,6 +70,12 @@ class ControllerStore {
   }
 
 
+  /**
+   * 设置进度
+   */
+  setProgress = (percent) => {
+    
+  }
 }
 
 export default new ControllerStore();

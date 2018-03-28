@@ -28,8 +28,6 @@ export default class Volume extends Component {
   render() {
     const { volume, playing, pause, playlist, cut } = this.props
 
-    console.log(playlist)
-
     return (
       <div>
         <button onClick={() => cut(-1)}><ChevronLeft /></button>

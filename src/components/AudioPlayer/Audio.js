@@ -30,7 +30,7 @@ export default class AudioPlayer extends Component {
   }
 
   progress(currentTime = 0) {
-    // console.log(arguments)
+    console.log(currentTime)
   }
 
   buffering() {
