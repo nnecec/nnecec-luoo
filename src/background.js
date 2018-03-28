@@ -5,10 +5,11 @@
 
 import path from "path";
 import url from "url";
-import { app, Menu } from "electron";
+import { app, Menu, ipcMain } from "electron";
 import { devMenuTemplate } from "./menu/dev_menu_template";
 import { editMenuTemplate } from "./menu/edit_menu_template";
 import createWindow from "./helpers/window";
+import MyIpc from './ipc/ipc'
 
 // Special module holding environment variables which you declared
 // in config/env_xxx.json file.
@@ -53,8 +54,12 @@ app.on("ready", () => {
   if (env.name === "development") {
     mainWindow.openDevTools();
   }
+
+  new MyIpc(ipcMain, mainWindow.webContents)
+
 });
 
 app.on("window-all-closed", () => {
   app.quit();
 });
+

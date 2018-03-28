@@ -4,6 +4,9 @@ import { ipcRenderer } from 'electron';
 
 @inject(stores => ({
   music: stores.controllerStore.music,
+
+  volume: stores.playerStore.volume,
+  setVolume: stores.playerStore.setVolume,
 }))
 @observer
 export default class AudioPlayer extends Component {
@@ -12,15 +15,26 @@ export default class AudioPlayer extends Component {
   }
 
   componentDidMount() {
+    const { music, next, volume, setVolume } = this.props
+
     const player = this.refs.player
+
+
+    ipcRenderer.on('player-volume-change', (event, arg) => {
+      const _volume = parseFloat(arg.volume)
+
+      setVolume(_volume);
+      player.volume = _volume
+    })
+    player.volume = volume
   }
 
   progress(currentTime = 0) {
-    console.log(arguments)
+    // console.log(arguments)
   }
 
   buffering() {
-    console.log(arguments)
+    // console.log(arguments)
   }
 
   resetProgress() {
@@ -28,7 +42,7 @@ export default class AudioPlayer extends Component {
   }
 
   render() {
-    const { music, next } = this.props
+    const { music, next, volume } = this.props
 
     return (
       <audio
@@ -40,7 +54,7 @@ export default class AudioPlayer extends Component {
           this.passed = 0
           next(true)
         }}
-        onError={e => console.log(e)}
+        // onError={e => console.log(e)}
         onProgress={e => this.buffering(e)}
         onSeeked={e => this.resetProgress()}
         onTimeUpdate={e => {

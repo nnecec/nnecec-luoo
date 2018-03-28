@@ -72,11 +72,16 @@ class VolDetail extends Component {
             <p dangerouslySetInnerHTML={{ __html: volDetail.description }} className="description" />
           </div>
 
-          <div className="music-list">
+          <div className="music-list font-hei">
 
             <ul className="list">
               {
-                list && list.map((music, index) => (<li key={index} onClick={() => this.playVol(music.id)}>{music.song} - {music.artist}</li>))
+                list && list.map((music, index) => (
+                  <li className="music" key={index} onClick={() => this.playVol(music.id)}>
+                    {music.song}
+                    <span className="artist">{music.artist}</span>
+                  </li>)
+                )
               }
             </ul>
           </div>

@@ -19,6 +19,10 @@ const ProviderStores = {
 const history = syncHistoryWithStore(browserHistory, routingStore);
 
 class App extends Component {
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <Provider {...ProviderStores}>

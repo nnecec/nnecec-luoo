@@ -6,7 +6,7 @@
     margin-bottom: 80px;
     box-shadow: 0 6px 2px -10px rgba(0, 0, 0, 0.4), 0 10px 10px 0 rgba(0, 0, 0, 0.3), 0 2px 10px 0 rgba(0, 0, 0, 0.25);
     position: relative;
-    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       box-shadow: 0 10px 10px -6px rgba(0, 0, 0, 0.4), 0 16px 20px 2px rgba(0, 0, 0, 0.3), 0 6px 28px 4px rgba(0, 0, 0, 0.25);
@@ -95,6 +95,28 @@
       p {
         span {
           background-color: transparent !important;
+        }
+      }
+    }
+
+    .music-list {
+      .list {
+        list-style: none;
+      }
+
+      .music {
+        padding: 8px;
+        margin: 4px 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .artist {
+          opacity: 0.6;
+          font-size: 12px;
+          margin-left: 10px;
         }
       }
     }
