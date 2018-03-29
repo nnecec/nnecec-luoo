@@ -3,17 +3,16 @@ import { inject, observer } from 'mobx-react';
 import { ipcRenderer } from 'electron';
 
 @inject(stores => ({
+  music: stores.controllerStore.music,
   progress: stores.playerStore.progress,
+  currentTime: stores.playerStore.currentTime,
+  duration: stores.playerStore.duration,
 
   // function
   setProgress: stores.playerStore.setProgress,
 }))
 @observer
 export default class Progress extends Component {
-  componentWillReceiveProps(nextProps) {
-
-  }
-
   componentDidMount() {
 
   }
@@ -27,10 +26,15 @@ export default class Progress extends Component {
   }
 
   render() {
-    const { progress } = this.props
+    const { progress, music = {}, currentTime, duration } = this.props
 
     return (
-      <input type="range" min="0" max="1" step="0.001" value={progress || 0} onChange={this.handleProgressChange} />
+      <div className="luoo-progress progress">
+        <input type="range" min="0" max="1" step="0.001" value={progress || 0} onChange={this.handleProgressChange} disabled={!music.src} />
+        <div>
+          <span>{currentTime}</span>/<span>{duration}</span>
+        </div>
+      </div>
     );
   }
 }

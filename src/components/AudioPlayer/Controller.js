@@ -17,9 +17,7 @@ import { Play, Pause, ChevronRight, ChevronLeft } from 'react-feather'
 }))
 @observer
 export default class Volume extends Component {
-  componentWillReceiveProps(nextProps) {
 
-  }
 
   componentDidMount() {
 
@@ -29,12 +27,12 @@ export default class Volume extends Component {
     const { volume, playing, pause, playlist, cut } = this.props
 
     return (
-      <div>
-        <button onClick={() => cut(-1)}><ChevronLeft /></button>
+      <div class="luoo-controller controller">
+        <button onClick={() => cut(-1)}><ChevronLeft size={16} /></button>
         {
-          playing ? <button onClick={pause}><Pause /></button> : <button><Play /></button>
+          playing ? <button onClick={pause}><Pause size={16} /></button> : <button><Play size={16} /></button>
         }
-        <button onClick={() => cut(1)}><ChevronRight /></button>
+        <button onClick={() => cut(1)}><ChevronRight size={16} /></button>
       </div>
     );
   }

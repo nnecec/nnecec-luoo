@@ -11,9 +11,6 @@ import { ipcRenderer } from 'electron';
 }))
 @observer
 export default class AudioPlayer extends Component {
-  componentWillReceiveProps(nextProps) {
-
-  }
 
   componentDidMount() {
     const { music, next, volume, setVolume, setProgress } = this.props
@@ -29,9 +26,10 @@ export default class AudioPlayer extends Component {
     })
     ipcRenderer.on('player-progress-change', (event, arg) => {
       const _percent = parseFloat(arg.percent)
-      const duration = audio.duration 
-      setProgress(_percent);
-      audio.currentTime = _percent * duration
+      const duration = audio.duration
+      const currentTime = _percent * duration
+      setProgress(currentTime, duration);
+      audio.currentTime = currentTime
     })
     audio.volume = volume
   }
@@ -43,7 +41,8 @@ export default class AudioPlayer extends Component {
     // if (currentTime * 1000 - this.passed < 1000) {
     //   return;
     // }
-    setProgress(currentTime / duration)
+    
+    setProgress(currentTime, duration)
 
     // this.passed = currentTime * 1000;
   }

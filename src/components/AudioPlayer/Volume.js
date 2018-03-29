@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { ipcRenderer } from 'electron';
-import { VolumeX, Volume2 } from 'react-feather'
+import { VolumeX, Volume1, Volume2 } from 'react-feather'
 
 @inject(stores => ({
   volume: stores.playerStore.volume,
@@ -12,9 +12,6 @@ import { VolumeX, Volume2 } from 'react-feather'
 }))
 @observer
 export default class Volume extends Component {
-  componentWillReceiveProps(nextProps) {
-
-  }
 
   componentDidMount() {
 
@@ -33,12 +30,15 @@ export default class Volume extends Component {
     const { volume, muted } = this.props
 
     return (
-      <div>
+      <div className="luoo-volume volume">
         {
-          (volume === 0) && <button><VolumeX /></button>
+          (volume === 0) && <button><VolumeX size={16} /></button>
         }
         {
-          (volume !== 0) && <button><Volume2 /></button>
+          (volume > 0 && volume < 0.5) && <button><Volume1 size={16} /></button>
+        }
+        {
+          (volume >= 0.5) && <button><Volume2 size={16} /></button>
         }
         <input type="range" min="0" max="1" step="0.001" defaultValue={volume} onChange={this.handleVolumeChange} />
 
