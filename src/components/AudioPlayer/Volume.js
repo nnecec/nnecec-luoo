@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { ipcRenderer } from 'electron';
+import { VolumeX, Volume2 } from 'react-feather'
 
 @inject(stores => ({
   volume: stores.playerStore.volume,
+  muted: stores.playerStore.muted,
 
   // function
   setVolume: stores.playerStore.setVolume,
@@ -28,10 +30,19 @@ export default class Volume extends Component {
   }
 
   render() {
-    const { volume } = this.props
+    const { volume, muted } = this.props
 
     return (
-      <input type="range" min="0" max="1" step="0.001" defaultValue={volume} onChange={this.handleVolumeChange} />
+      <div>
+        {
+          (volume === 0) && <button><VolumeX /></button>
+        }
+        {
+          (volume !== 0) && <button><Volume2 /></button>
+        }
+        <input type="range" min="0" max="1" step="0.001" defaultValue={volume} onChange={this.handleVolumeChange} />
+
+      </div>
     );
   }
 }

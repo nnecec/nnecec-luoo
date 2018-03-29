@@ -21,9 +21,7 @@ class Root extends Component {
 
   componentDidMount() {
     const { routing } = this.props
-    console.log(routing)
     routing.history.listen((location, action) => {
-      console.log(location, action)
       global.scrollTo(0, 0)
     })
   }

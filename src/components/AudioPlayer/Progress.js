@@ -21,15 +21,16 @@ export default class Progress extends Component {
   handleProgressChange = (e) => {
     const { setProgress } = this.props
     const value = e.target.value
-    setProgress(value)
-
+    ipcRenderer.send('player-progress-change', {
+      percent: value
+    })
   }
 
   render() {
     const { progress } = this.props
 
     return (
-      <input type="range" min="0" max="1" step="0.001" defaultValue={progress} onChange={this.handleProgressChange} />
+      <input type="range" min="0" max="1" step="0.001" value={progress || 0} onChange={this.handleProgressChange} />
     );
   }
 }

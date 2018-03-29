@@ -6,6 +6,7 @@ import { PLAYLIST_PLAY_TYPE, PLAY_MODE } from 'utils/constant'
 
 class PlayerStore {
   @observable volume = 0.1;
+  @observable muted = false;
   @observable progress = 0;
 
   /**
@@ -23,7 +24,7 @@ class PlayerStore {
   setProgress = (percent) => {
     this.progress = percent
   }
-  
+
 
 
 }

@@ -7,6 +7,7 @@ import { ipcRenderer } from 'electron';
 
   volume: stores.playerStore.volume,
   setVolume: stores.playerStore.setVolume,
+  setProgress: stores.playerStore.setProgress,
 }))
 @observer
 export default class AudioPlayer extends Component {
@@ -15,22 +16,36 @@ export default class AudioPlayer extends Component {
   }
 
   componentDidMount() {
-    const { music, next, volume, setVolume } = this.props
+    const { music, next, volume, setVolume, setProgress } = this.props
 
-    const player = this.refs.player
+    const audio = this.refs.audio
 
 
     ipcRenderer.on('player-volume-change', (event, arg) => {
       const _volume = parseFloat(arg.volume)
 
       setVolume(_volume);
-      player.volume = _volume
+      audio.volume = _volume
     })
-    player.volume = volume
+    ipcRenderer.on('player-progress-change', (event, arg) => {
+      const _percent = parseFloat(arg.percent)
+      const duration = audio.duration 
+      setProgress(_percent);
+      audio.currentTime = _percent * duration
+    })
+    audio.volume = volume
   }
 
   progress(currentTime = 0) {
-    console.log(currentTime)
+    const { music, setProgress } = this.props
+    const duration = this.refs.audio.duration || 0
+
+    // if (currentTime * 1000 - this.passed < 1000) {
+    //   return;
+    // }
+    setProgress(currentTime / duration)
+
+    // this.passed = currentTime * 1000;
   }
 
   buffering() {
@@ -43,7 +58,6 @@ export default class AudioPlayer extends Component {
 
   render() {
     const { music, next, volume } = this.props
-    console.log(music)
 
     return (
       <audio
@@ -61,7 +75,7 @@ export default class AudioPlayer extends Component {
         onTimeUpdate={e => {
           this.progress(e.target.currentTime);
         }}
-        ref="player"
+        ref="audio"
         src={music && music.src ? music.src : ''}
         style={{ display: 'none' }} />
     );

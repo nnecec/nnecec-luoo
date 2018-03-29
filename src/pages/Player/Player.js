@@ -10,9 +10,9 @@ class Player extends Component {
     return (
       <div className="luoo-player player">
         <Controller />
+        <Volume />
         <Progress />
         <Audio />
-        <Volume />
       </div>
     );
   }

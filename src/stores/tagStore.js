@@ -7,7 +7,6 @@ class TagStore {
   fetchTagList = async (params) => {
     const tagList = await tagAPI.fetchTagList(params)
     runInAction(() => {
-      console.log(tagList)
       this.tagList = tagList.data
     })
   }
