@@ -3,8 +3,13 @@
 @import "./fonts.scss";
 
 @import "./header.scss";
+@import "./sidebar.scss";
 @import "./player.scss";
 @import "./vol.scss";
+
+* {
+  box-sizing: border-box;
+}
 
 html, body {
   width: 100%;
@@ -35,10 +40,6 @@ figure {
 
 #app {
   height: 100%;
-}
-
-.luoo {
-  padding-top: 50px;
 }
 
 .font-hei {

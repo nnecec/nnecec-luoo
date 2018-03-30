@@ -1,0 +1,65 @@
+.sidebar {
+  .logo {
+    position: fixed;
+    z-index: 2002;
+    top: 40px;
+    left: 40px;
+    padding: 10px;
+
+    a {
+      z-index: 2002;
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      border: 1px solid #333;
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      z-index: 2001;
+    }
+  }
+
+  .link {
+    width: 400px;
+    padding-left: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 1);
+    height: 100%;
+    z-index: 2000;
+    transform: translateX(-400px);
+    display: grid;
+    grid-template-rows: 40px 40px 40px 40px 40px;
+    align-content: center;
+
+    a {
+      margin-left: 40px;
+
+      &::after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        bottom: 4px;
+        left: 4px;
+        transform: scale(0);
+        transform-origin: left;
+        background-color: #333;
+        transition: transform 0.24s ease;
+      }
+
+      &:hover {
+        &::after {
+          content: "";
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}

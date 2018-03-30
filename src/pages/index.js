@@ -33,7 +33,6 @@ class Root extends Component {
     return (
       <div style={{ height: '100%' }} className="font-song luoo">
         <Sidebar></Sidebar>
-        <Header></Header>
         <Content>
           <Switch>
             <Route exact path="/" component={Home} />
