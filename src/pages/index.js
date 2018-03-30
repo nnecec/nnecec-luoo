@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 
 import Header from './Shared/Header'
+import Sidebar from './Shared/Sidebar'
 import Player from './Player/Player'
 
 import Content from './Shared/Content'
@@ -31,6 +32,7 @@ class Root extends Component {
 
     return (
       <div style={{ height: '100%' }} className="font-song luoo">
+        <Sidebar></Sidebar>
         <Header></Header>
         <Content>
           <Switch>
