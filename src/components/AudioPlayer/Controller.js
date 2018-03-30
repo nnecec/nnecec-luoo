@@ -27,7 +27,7 @@ export default class Volume extends Component {
     const { volume, playing, pause, playlist, cut } = this.props
 
     return (
-      <div class="luoo-controller controller">
+      <div className="luoo-controller controller">
         <button onClick={() => cut(-1)}><ChevronLeft size={16} /></button>
         {
           playing ? <button onClick={pause}><Pause size={16} /></button> : <button><Play size={16} /></button>

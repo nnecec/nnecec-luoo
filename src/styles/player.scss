@@ -74,6 +74,11 @@
     display: grid;
     width: 400px;
     align-items: center;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 40px;
+
+    .time {
+      font-size: 12px;
+      color: #999;
+    }
   }
 }

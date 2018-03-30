@@ -51,9 +51,6 @@ export default class AudioPlayer extends Component {
     // console.log(arguments)
   }
 
-  resetProgress() {
-
-  }
 
   render() {
     const { music, next, volume } = this.props

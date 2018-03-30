@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { ipcRenderer } from 'electron';
 
+import * as format from 'utils/format'
+
 @inject(stores => ({
   music: stores.controllerStore.music,
   progress: stores.playerStore.progress,
@@ -31,8 +33,8 @@ export default class Progress extends Component {
     return (
       <div className="luoo-progress progress">
         <input type="range" min="0" max="1" step="0.001" value={progress || 0} onChange={this.handleProgressChange} disabled={!music.src} />
-        <div>
-          <span>{currentTime}</span>/<span>{duration}</span>
+        <div className="time number">
+          <span>{format.progressTime(currentTime)}</span>/<span>{format.progressTime(duration)}</span>
         </div>
       </div>
     );
