@@ -22,7 +22,6 @@ class ControllerStore {
       return
     }
     this.playlist = playlist
-
   }
 
   /**

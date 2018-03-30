@@ -6,11 +6,19 @@ import { ipcRenderer } from 'electron';
   music: stores.controllerStore.music,
 
   volume: stores.playerStore.volume,
+
+  // function
+  cut: stores.controllerStore.cut,
   setVolume: stores.playerStore.setVolume,
   setProgress: stores.playerStore.setProgress,
 }))
 @observer
 export default class AudioPlayer extends Component {
+
+  constructor(props) {
+    super(props)
+    this.interval = 0
+  }
 
   componentDidMount() {
     const { music, next, volume, setVolume, setProgress } = this.props
@@ -35,39 +43,43 @@ export default class AudioPlayer extends Component {
   }
 
   progress(currentTime = 0) {
+
+    // 每间隔一秒
+    if (currentTime * 1000 - this.interval < 1000) {
+      return;
+    }
     const { music, setProgress } = this.props
     const duration = this.refs.audio.duration || 0
-
-    // if (currentTime * 1000 - this.passed < 1000) {
-    //   return;
-    // }
-    
     setProgress(currentTime, duration)
 
-    // this.passed = currentTime * 1000;
+    this.interval = currentTime * 1000
   }
 
-  buffering() {
-    // console.log(arguments)
+  buffering(e) {
+    console.log(arguments)
+  }
+
+  resetProgress = (e) => {
+    this.interval = 0
   }
 
 
   render() {
-    const { music, next, volume } = this.props
+    const { music, cut, volume } = this.props
 
     return (
       <audio
         autoPlay={true}
         onAbort={e => {
-          this.passed = 0, this.progress();
+          this.interval = 0, this.progress();
         }}
         onEnded={e => {
-          this.passed = 0
-          next(true)
+          this.interval = 0
+          cut(1)
         }}
-        // onError={e => console.log(e)}
-        onProgress={e => this.buffering(e)}
-        onSeeked={e => this.resetProgress()}
+        onError={e => console.log(e)}
+        onProgress={this.buffering}
+        onSeeked={this.resetProgress}
         onTimeUpdate={e => {
           this.progress(e.target.currentTime);
         }}

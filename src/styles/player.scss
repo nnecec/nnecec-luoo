@@ -1,6 +1,8 @@
 .player {
   display: grid;
-  grid-template-columns: 1fr 1fr 4fr;
+  grid-template-columns: 100px 120px auto 40px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
   justify-items: center;
   height: 50px;
   position: fixed;
@@ -9,6 +11,7 @@
   right: 0;
   background-color: rgba(255, 255, 255, 0.9);
   z-index: 1000;
+  padding: 0 20px;
 
   button {
     background-color: transparent;
@@ -56,29 +59,53 @@
     background: #ddd;
   }
 
+  & > div {
+    width: 100%;
+  }
+
   .controller {
     display: grid;
-    width: 120px;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr;
   }
 
   .volume {
     display: grid;
-    width: 180px;
     align-items: center;
     grid-template-columns: 1fr 3fr;
   }
 
   .progress {
     display: grid;
-    width: 400px;
     align-items: center;
-    grid-template-columns: 1fr 40px;
+    grid-template-columns: 1fr auto;
 
     .time {
       font-size: 12px;
       color: #999;
+      padding: 0 10px;
+    }
+  }
+
+  .playlist {
+    position: relative;
+    display: grid;
+    align-items: center;
+
+    button {
+      position: relative;
+    }
+
+    .count {
+      position: absolute;
+      font-size: 10px;
+      top: 0;
+    }
+
+    .list {
+      position: absolute;
+      bottom: 0;
+      right: 0;
     }
   }
 }
