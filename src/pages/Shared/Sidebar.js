@@ -1,40 +1,59 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import anime from 'animejs'
-import { spring, styler, easing } from 'popmotion'
-import pose from 'popmotion-pose'
+
 export default class Sidebar extends Component {
 
   componentDidMount() {
-    this.side = styler(this.sidebar)
-
-
+    this.state = {
+      isExpand: false
+    }
   }
 
   handleExpand = () => {
-    const sidebarAnime = anime({
-      targets: this.sidebar,
-      translateX: -100,
-      boxShadow: 'rgba(34, 48, 64, 0.8) 0px 8px 80px 0px',
-      easing: 'easeInOutQuart',
-      duration: 600
-    });
-  }
-  handleNarrow = () => {
+    const { isExpand } = this.state
+
+    if (!isExpand) {
+      const sidebarAnime = anime({
+        targets: this.sidebar,
+        translateX: -100,
+        easing: 'easeInOutQuart',
+        duration: 600
+      })
+      sidebarAnime.complete = () => { this.setState({ isExpand: true }) }
+
+      const sidebarItem = anime({
+        targets: '.luoo-sidebar .link span',
+        translateX: 60,
+        delay: 400,
+        duration: function (el, i, l) {
+          return 500 + (i * 200)
+        }
+      })
+      return
+    }
+
     const sidebarAnime = anime({
       targets: this.sidebar,
       translateX: -400,
-      boxShadow: null,
       easing: 'easeInOutQuart',
       duration: 600
-    });
+    })
+    sidebarAnime.complete = () => { this.setState({ isExpand: false }) }
 
+    const sidebarItem = anime({
+      targets: '.luoo-sidebar .link span',
+      translateX: 0,
+      duration: function (el, i, l) {
+        return 500 + (i * 200)
+      }
+    })
   }
 
   render() {
     return (
-      <div className="sidebar luoo-sidebar" onMouseLeave={this.handleNarrow}>
-        <nav className="logo" onMouseEnter={this.handleExpand}><Link to="/">落</Link></nav>
+      <div className="sidebar luoo-sidebar" onClick={this.handleExpand}>
+        <nav className="logo">落</nav>
         <nav className="link" ref={r => this.sidebar = r}>
           <span><Link to="/">主页</Link></span>
           <span><Link to="/music/tag/1">期刊</Link></span>
@@ -42,6 +61,6 @@ export default class Sidebar extends Component {
           <span><Link to="/essay">专栏</Link></span>
         </nav>
       </div>
-    );
+    )
   }
 }

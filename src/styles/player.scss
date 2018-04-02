@@ -92,10 +92,6 @@
     display: grid;
     align-items: center;
 
-    button {
-      position: relative;
-    }
-
     .count {
       position: absolute;
       font-size: 10px;
@@ -104,8 +100,23 @@
 
     .list {
       position: absolute;
-      bottom: 0;
+      bottom: 50px;
       right: 0;
+      width: 260px;
+      height: 320px;
+      list-style: none;
+      background-color: #fff;
+      margin: 0;
+      opacity: 0;
+      padding: 20px;
+      overflow-y: auto;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.1);
+      li {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
     }
   }
 }
