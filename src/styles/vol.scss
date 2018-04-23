@@ -1,5 +1,32 @@
+.tag-section {
+  padding: 30px 80px;
+
+  .tag {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 12px;
+    position: relative;
+    transition: text-shadow 0.24s ease;
+
+    &:hover {
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    &:not(:last-child)::after {
+      content: "";
+      width: 1px;
+      height: 100%;
+      background-color: #ddd;
+      display: block;
+      position: absolute;
+      right: -8px;
+      top: 0;
+    }
+  }
+}
+
 .luoo-vol-list {
-  padding: 60px;
+  padding: 20px 60px 40px;
 
   .luoo-vol-item {
     height: calc(100vh - 160px);

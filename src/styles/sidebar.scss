@@ -6,6 +6,12 @@
     left: 40px;
     padding: 10px;
 
+    &:hover {
+      &::after {
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+      }
+    }
+
     a {
       z-index: 2002;
     }
@@ -20,6 +26,7 @@
       bottom: 6px;
       right: 6px;
       z-index: 2001;
+      transition: box-shadow 0.36s ease;
     }
   }
 
@@ -59,6 +66,18 @@
           content: "";
           transform: scale(1);
         }
+      }
+    }
+
+    .setting {
+      text-align: right;
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+
+      span {
+        margin-left: 10px;
+        color: #999;
       }
     }
   }

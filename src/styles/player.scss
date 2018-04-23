@@ -118,6 +118,15 @@
       li {
         font-size: 12px;
         margin-bottom: 10px;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &.active {
+          color: red;
+        }
       }
     }
   }

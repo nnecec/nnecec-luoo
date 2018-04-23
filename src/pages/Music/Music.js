@@ -36,7 +36,7 @@ class Music extends Component {
     const { tagList, location } = this.props
 
     return tagList.map((tag, index) => (
-      <a key={index} onClick={() => this.fetchVolList(tag.code)}>{tag.name}</a>
+      <a className="tag" key={index} onClick={() => this.fetchVolList(tag.code)}>{tag.name}</a>
     ))
   }
 
@@ -50,7 +50,6 @@ class Music extends Component {
             this.renderTagList()
           }
         </div>
-
 
         <div className="vol-section">
           <VolList volList={volList}></VolList>
