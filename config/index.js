@@ -3,7 +3,9 @@ const ENV = process.env.NODE_ENV || 'development'
 function serverConfig() {
   return {
     development: {
-      api: 'http://localhost:4101/api'
+      host: 'http://localhost:4101',
+      api: 'http://localhost:4101/api',
+
     }
   }[ENV]
 }

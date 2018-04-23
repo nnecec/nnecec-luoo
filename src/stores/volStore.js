@@ -34,7 +34,7 @@ class VolStore {
         this.volDetail = volDetail.data
         this.isLoading = false
 
-        this.volDetailStyle.bg = this.volDetail.swatches && (this.volDetail.swatches.LightVibrant || this.volDetail.swatches.LightMuted)
+        this.volDetailStyle.bg = this.volDetail.swatches && (this.volDetail.swatches.LightVibrant || this.volDetail.swatches.LightMuted || this.volDetail.swatches.Muted)
 
         this.volDetailStyle.color = this.volDetail.swatches && (this.volDetail.swatches.DarkVibrant || this.volDetail.swatches.DarkMuted)
       })

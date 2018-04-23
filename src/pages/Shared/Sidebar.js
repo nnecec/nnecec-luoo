@@ -2,13 +2,20 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import anime from 'animejs'
 import { RefreshCw, Settings } from 'react-feather'
+import * as syncAPI from 'api/syncAPI'
 
 export default class Sidebar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isExpand: false,
+      loading: true
+
+    }
+  }
 
   componentDidMount() {
-    this.state = {
-      isExpand: false
-    }
+
   }
 
   handleExpand = () => {
@@ -53,7 +60,27 @@ export default class Sidebar extends Component {
     })
   }
 
+  handleSyncLuoo = (e) => {
+
+    e.stopPropagation()
+
+    this.setState({ loading: true })
+
+
+    Promise.all([syncAPI.syncVolList(), syncAPI.syncTagList()])
+      .then(values => {
+        console.log(values)
+        if (values) this.setState({ loading: false })
+      })
+      .catch(err => {
+        console.log(err)
+        this.setState({ loading: false })
+      })
+  }
+
   render() {
+    const { loading } = this.state
+
     return (
       <div className="sidebar luoo-sidebar" onClick={this.handleExpand}>
         <nav className="logo">落</nav>
@@ -63,7 +90,9 @@ export default class Sidebar extends Component {
           <span><Link to="/musician">单曲</Link></span>
           <span><Link to="/essay">专栏</Link></span>
           <div className="setting">
-            <span className="hover"><RefreshCw size={14}></RefreshCw></span>
+            <span className="hover" onClick={this.handleSyncLuoo}>
+              <RefreshCw size={14} className={loading ? 'loading' : ''} ></RefreshCw>
+            </span>
             <span className="hover"><Settings size={14}></Settings></span>
           </div>
         </nav>

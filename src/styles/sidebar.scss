@@ -79,6 +79,20 @@
         margin-left: 10px;
         color: #999;
       }
+
+      .loading {
+        animation: rotation 3s linear infinite;
+      }
     }
+  }
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
   }
 }
