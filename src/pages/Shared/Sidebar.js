@@ -9,8 +9,7 @@ export default class Sidebar extends Component {
     super(props)
     this.state = {
       isExpand: false,
-      loading: true
-
+      loading: false
     }
   }
 
@@ -65,7 +64,6 @@ export default class Sidebar extends Component {
     e.stopPropagation()
 
     this.setState({ loading: true })
-
 
     Promise.all([syncAPI.syncVolList(), syncAPI.syncTagList()])
       .then(values => {
