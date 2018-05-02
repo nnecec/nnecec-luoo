@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 
 import Loading from 'components/Loading'
+import BackButton from '../Shared/BackButton'
 
 @inject(stores => ({
   routing: stores.routing,
@@ -46,7 +47,7 @@ class VolDetail extends Component {
     const { volDetail, setPlayList, play } = this.props
 
     setPlayList(volDetail.musicList.slice())
-    
+
     play(id)
   }
 
@@ -58,6 +59,7 @@ class VolDetail extends Component {
     return (
       <div className="luoo-vol-detail" style={{ backgroundColor: `rgb(${volDetailStyle.bg})`, color: `rgb(${volDetailStyle.color})` }}>
         <Loading show={isLoading} />
+        <BackButton />
         <div className="vol-img" style={{ backgroundImage: `url(${volDetail.img})` }}></div>
 
         <div className="vol-info">

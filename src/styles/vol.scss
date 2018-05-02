@@ -25,8 +25,13 @@
   }
 }
 
+.pagination-section {
+  text-align: right;
+  padding: 40px 60px;
+}
+
 .luoo-vol-list {
-  padding: 20px 60px 40px;
+  padding: 20px 60px 20px;
 
   .luoo-vol-item {
     height: calc(100vh - 160px);

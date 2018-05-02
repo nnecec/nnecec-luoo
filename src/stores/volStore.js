@@ -1,6 +1,7 @@
 import { observable, action, reaction, runInAction } from 'mobx'
 import * as volAPI from 'api/volAPI'
 class VolStore {
+  @observable page = 1
   @observable volList = []
   @observable volDetail = {}
   @observable volDetailStyle = {
@@ -17,7 +18,7 @@ class VolStore {
       runInAction(() => {
         this.volList = volList.data
         this.isLoading = false
-
+        this.page = params.page || 1
       })
     } catch (error) {
 

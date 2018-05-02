@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { inject, observer } from 'mobx-react';
+import { Link, withRouter } from 'react-router-dom'
 import anime from 'animejs'
-import { RefreshCw, Settings } from 'react-feather'
+import { RefreshCw, Settings, ArrowLeft } from 'react-feather'
 import * as syncAPI from 'api/syncAPI'
 
+@inject(stores => ({
+  routing: stores.routing,
+}))
+@withRouter
+@observer
 export default class Sidebar extends Component {
   constructor(props) {
     super(props)
@@ -11,6 +17,8 @@ export default class Sidebar extends Component {
       isExpand: false,
       loading: false
     }
+    this.sidebar = React.createRef()
+    this.backButton = React.createRef()
   }
 
   componentDidMount() {
@@ -22,7 +30,7 @@ export default class Sidebar extends Component {
 
     if (!isExpand) {
       const sidebarAnime = anime({
-        targets: this.sidebar,
+        targets: this.sidebar.current,
         translateX: -100,
         easing: 'easeInOutQuart',
         duration: 500
@@ -42,7 +50,7 @@ export default class Sidebar extends Component {
     }
 
     const sidebarAnime = anime({
-      targets: this.sidebar,
+      targets: this.sidebar.current,
       translateX: -400,
       easing: 'easeInOutQuart',
       duration: 400
@@ -82,7 +90,7 @@ export default class Sidebar extends Component {
     return (
       <div className="sidebar luoo-sidebar" onClick={this.handleExpand}>
         <nav className="logo">落</nav>
-        <nav className="link" ref={r => this.sidebar = r}>
+        <nav className="link" ref={this.sidebar}>
           <span><Link to="/">主页</Link></span>
           <span><Link to="/music/tag/1">期刊</Link></span>
           <span><Link to="/musician">单曲</Link></span>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
-import { MessageCircle, Heart } from 'react-feather'
+import { MessageCircle, Heart, ChevronLeft, ChevronRight } from 'react-feather'
 
 @inject(stores => ({
   routing: stores.routing,
@@ -36,6 +36,8 @@ class VolList extends Component {
     })
   }
 
+
+
   render() {
 
     return (
@@ -43,6 +45,8 @@ class VolList extends Component {
         {
           this.renderVolList()
         }
+
+       
       </div>
     );
   }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
+import { ChevronLeft, ChevronRight } from 'react-feather'
+
+import { Button } from 'components'
 
 import VolList from './VolList'
 
@@ -8,6 +11,7 @@ import VolList from './VolList'
   routing: stores.routing,
   tagList: stores.tagStore.tagList,
   volList: stores.volStore.volList,
+  page: stores.volStore.page,
 
   // function
   fetchTagList: stores.tagStore.fetchTagList,
@@ -40,6 +44,11 @@ class Music extends Component {
     ))
   }
 
+  switchPage = () => {
+    const { page } = this.props
+    this.props.fetchVolList({ page: page + 1 })
+  }
+
   render() {
     const { location, volList } = this.props
 
@@ -53,6 +62,15 @@ class Music extends Component {
 
         <div className="vol-section">
           <VolList volList={volList}></VolList>
+        </div>
+
+        <div className="pagination-section">
+          <Button>
+            <ChevronLeft size={14} onClick={this.switchPage}></ChevronLeft>
+          </Button>
+          <Button>
+            <ChevronRight size={14} onClick={this.switchPage}></ChevronRight>
+          </Button>
         </div>
       </div>
     );
