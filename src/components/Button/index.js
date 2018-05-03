@@ -4,10 +4,12 @@ import styled from 'styled-components';
 class Button extends React.Component {
 
   handleMouseEnter = () => {
-    
+
   }
 
   render() {
+    const { disabled, children, onClick } = this.props
+
     const SCButton = styled.button`
       background: transparent;
       outline: none;
@@ -15,7 +17,7 @@ class Button extends React.Component {
     `
 
     return (
-      <SCButton>{this.props.children}</SCButton>
+      <SCButton disabled={disabled} onClick={onClick}>{children}</SCButton>
     )
   }
 }

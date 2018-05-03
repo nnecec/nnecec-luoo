@@ -29,10 +29,8 @@ class Music extends Component {
     this.fetchVolList()
   }
 
-  fetchVolList = (tag = '', page = 1) => {
-    // const { match } = this.props
-    // const { page } = match.params
-
+  // 拉取期刊列表
+  fetchVolList = (page = 1, tag = '') => {
     this.props.fetchVolList({ tag, page })
   }
 
@@ -40,21 +38,24 @@ class Music extends Component {
     const { tagList, location } = this.props
 
     return tagList.map((tag, index) => (
-      <a className="tag" key={index} onClick={() => this.fetchVolList(tag.code)}>{tag.name}</a>
+      <a className="tag" key={index} onClick={() => this.fetchVolList(1, tag.code)}>{tag.name}</a>
     ))
   }
 
-  switchPage = () => {
+  // 页脚切换分页
+  switchPage = (offset) => {
     const { page } = this.props
-    this.props.fetchVolList({ page: page + 1 })
+
+    this.fetchVolList(page + offset)
   }
 
   render() {
-    const { location, volList } = this.props
+    const { location, volList, page } = this.props
 
     return (
       <div>
         <div className="tag-section">
+          <a className="tag" onClick={() => this.fetchVolList(1)}>全部</a>
           {
             this.renderTagList()
           }
@@ -65,11 +66,12 @@ class Music extends Component {
         </div>
 
         <div className="pagination-section">
-          <Button>
-            <ChevronLeft size={14} onClick={this.switchPage}></ChevronLeft>
+          <Button disabled={page <= 1} onClick={() => this.switchPage(-1)}>
+            <ChevronLeft size={14} ></ChevronLeft>
           </Button>
-          <Button>
-            <ChevronRight size={14} onClick={this.switchPage}></ChevronRight>
+          <span>{page}</span>
+          <Button disabled={page >= 100} onClick={() => this.switchPage(1)}>
+            <ChevronRight size={14} ></ChevronRight>
           </Button>
         </div>
       </div>
