@@ -3,7 +3,9 @@ const electron = require("electron");
 const webpack = require("webpack");
 const config = require("./webpack.app.config");
 
-const env = "development";
+console.log(process.env.NODE_ENV);
+
+const env = process.env.NODE_ENV || "development";
 const compiler = webpack(config(env));
 let electronStarted = false;
 const watching = compiler.watch({}, (err, stats) => {

@@ -1,12 +1,12 @@
 {
-  "name": "electron-boilerplate",
-  "productName": "Electron Boilerplate",
-  "description": "Starter for your Electron application",
-  "version": "0.0.0",
-  "private": true,
-  "author": "Mr. Gumby <mr.gumby@example.com>",
-  "copyright": "© 2017, Gumby inc.",
-  "homepage": "http://example.com",
+  "name": "nnecec-luoo",
+  "productName": "nnecec-luoo",
+  "description": "nnecec's luoo music player.",
+  "version": "0.1.0",
+  "private": false,
+  "author": "nnecec <nnecec@outlook.com>",
+  "copyright": "© 2018, nnecec inc.",
+  "homepage": "http://nnecec.cc",
   "main": "app/background.js",
   "build": {
     "appId": "com.example.electron-boilerplate",
@@ -27,8 +27,8 @@
     "pree2e": "webpack --config=build/webpack.app.config.js --env=test --display=none && webpack --config=build/webpack.e2e.config.js --env=test --display=none",
     "e2e": "mocha temp/e2e.js --require source-map-support/register",
     "test": "npm run unit && npm run e2e",
-    "start": "webpack-dashboard -- node build/start.js",
-    "release": "npm test && webpack --config=build/webpack.app.config.js --env=production && electron-builder"
+    "start": "webpack-dashboard --env=development node build/start.js",
+    "release": "webpack --config=build/webpack.app.config.js --env=production && electron-builder"
   },
   "dependencies": {
     "animejs": "^2.2.0",

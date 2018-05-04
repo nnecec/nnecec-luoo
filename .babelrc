@@ -12,7 +12,12 @@
     "@babel/react"
   ],
   "plugins": [
-    "@babel/plugin-proposal-decorators",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
     [
       "@babel/plugin-proposal-class-properties",
       {
