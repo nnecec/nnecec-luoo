@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import { Link, withRouter } from 'react-router-dom'
 import styled from 'styled-components'
-import { ChevronLeft } from 'react-feather'
+import { ArrowLeftCircle } from 'react-feather'
 
 @inject('routing')
 @withRouter
@@ -17,18 +17,20 @@ class BackButton extends Component {
 
   render() {
     const Button = styled.button`
-      position: absolute;
-      top: 80px;
       left: 20px;
       width: 40px;
       height: 40px;
       background: transparent;
       outline: none;
       border: none;
+      position: fixed;
+      top: 80px
     `
 
     return (
-      <Button onClick={this.handleBack}><ChevronLeft size={14}></ChevronLeft></Button>
+      <Button onClick={this.handleBack}>
+        <ArrowLeftCircle size={14} color={`#444`}></ArrowLeftCircle>
+      </Button>
     );
   }
 }

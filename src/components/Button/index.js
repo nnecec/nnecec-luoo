@@ -8,7 +8,7 @@ class Button extends React.Component {
   }
 
   render() {
-    const { disabled, children, onClick } = this.props
+    const { disabled, children, onClick, style } = this.props
 
     const SCButton = styled.button`
       background: transparent;
@@ -17,7 +17,11 @@ class Button extends React.Component {
     `
 
     return (
-      <SCButton disabled={disabled} onClick={onClick}>{children}</SCButton>
+      <SCButton
+        disabled={disabled}
+        onClick={onClick}
+        style={style}
+      >{children}</SCButton>
     )
   }
 }

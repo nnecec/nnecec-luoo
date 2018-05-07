@@ -35,12 +35,14 @@ app.on("ready", () => {
   setApplicationMenu();
 
   const mainWindow = createWindow("main", {
-    width: 600,
-    height: 500,
-    frame: false,
-    resizable: false,
+    width: 800,
+    height: 600,
+    // frame: false,
+    resizable: true,
     defaultFontSize: 14,
     scrollBounce: true,
+    backgroundColor: '#fff',
+    titleBarStyle: 'hidden'
   });
 
   mainWindow.loadURL(
@@ -52,7 +54,7 @@ app.on("ready", () => {
   );
 
   if (env.name === "development") {
-    mainWindow.openDevTools();
+    mainWindow.openDevTools({ mode: 'detach' });
   }
 
   new MyIpc(ipcMain, mainWindow.webContents)

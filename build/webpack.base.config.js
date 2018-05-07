@@ -2,7 +2,6 @@ const path = require("path");
 const glob = require('glob');
 const nodeExternals = require("webpack-node-externals");
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const PurifyCSSPlugin = require('purifycss-webpack');
 
@@ -44,7 +43,6 @@ module.exports = env => {
     },
     plugins: [
       new FriendlyErrorsWebpackPlugin(),
-      new DashboardPlugin(),
       new ExtractTextPlugin({
         filename: "style.css",
         disable: process.env.NODE_ENV === "development"

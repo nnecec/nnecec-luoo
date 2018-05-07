@@ -59,7 +59,7 @@ class VolDetail extends Component {
     return (
       <div className="luoo-vol-detail" style={{ backgroundColor: `rgb(${volDetailStyle.bg})`, color: `rgb(${volDetailStyle.color})` }}>
         <Loading show={isLoading} />
-        <BackButton />
+        <BackButton color={volDetailStyle.bg} />
         <div className="vol-img" style={{ backgroundImage: `url(${volDetail.img})` }}></div>
 
         <div className="vol-info">
