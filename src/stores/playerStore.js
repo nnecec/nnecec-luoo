@@ -1,15 +1,16 @@
 
-import { observable, action, computed } from 'mobx';
-import { ipcRenderer } from 'electron';
+import { observable, action, computed } from 'mobx'
+import { ipcRenderer } from 'electron'
 
 import { PLAYLIST_PLAY_TYPE, PLAY_MODE } from 'utils/constant'
+import storage from 'utils/storage'
 
 class PlayerStore {
-  @observable volume = 0.1;
-  @observable muted = false;
-  @observable progress = 0;
-  @observable currentTime = 0;
-  @observable duration = 0;
+  @observable volume = 0.1
+  @observable muted = false
+  @observable progress = 0
+  @observable currentTime = 0
+  @observable duration = 0
 
   /**
    * 设置音量
@@ -17,6 +18,7 @@ class PlayerStore {
   @action
   setVolume = (percent) => {
     this.volume = percent
+    storage.set('volume', percent)
   }
 
   /**
@@ -32,4 +34,4 @@ class PlayerStore {
 
 }
 
-export default new PlayerStore();
+export default new PlayerStore()
