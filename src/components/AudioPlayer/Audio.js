@@ -4,6 +4,7 @@ import { ipcRenderer } from 'electron';
 
 @inject(stores => ({
   music: stores.controllerStore.music,
+  playing: stores.controllerStore.playing,
 
   volume: stores.playerStore.volume,
 
@@ -18,20 +19,37 @@ export default class AudioPlayer extends Component {
   constructor(props) {
     super(props)
     this.interval = 0
+    this.audio = React.createRef()
+  }
+
+  getDerivedStateFromProps(nextProps, nextState) {
+    console.log(nextProps, nextState);
+
   }
 
   componentDidMount() {
     const { music, next, volume, setVolume, setProgress } = this.props
 
-    const audio = this.refs.audio
+    const audio = this.audio.current
 
+    // 播放器 播放状态
+    ipcRenderer.on('player-status-change', (event, args) => {
+      if (args.playing) {
+        audio.play()
+      } else {
+        audio.pause()
+      }
+    })
 
+    // 播放器 音量
     ipcRenderer.on('player-volume-change', (event, arg) => {
       const _volume = parseFloat(arg.volume)
-
-      setVolume(_volume);
+      console.log(_volume)
+      // setVolume(_volume);
       audio.volume = _volume
     })
+
+    // 播放器 播放进度
     ipcRenderer.on('player-progress-change', (event, arg) => {
       const _percent = parseFloat(arg.percent)
       const duration = audio.duration
@@ -42,6 +60,8 @@ export default class AudioPlayer extends Component {
     audio.volume = volume
   }
 
+
+
   progress(currentTime = 0) {
 
     // 每间隔一秒
@@ -49,14 +69,14 @@ export default class AudioPlayer extends Component {
       return;
     }
     const { music, setProgress } = this.props
-    const duration = this.refs.audio.duration || 0
+    const duration = this.audio.current.duration || 0
     setProgress(currentTime, duration)
 
     this.interval = currentTime * 1000
   }
 
   buffering(e) {
-    console.log(arguments)
+    // console.log(arguments)
   }
 
   resetProgress = (e) => {
@@ -77,13 +97,13 @@ export default class AudioPlayer extends Component {
           this.interval = 0
           cut(1)
         }}
-        onError={e => console.log(e)}
+        // onError={e => console.log(e)}
         onProgress={this.buffering}
         onSeeked={this.resetProgress}
         onTimeUpdate={e => {
           this.progress(e.target.currentTime);
         }}
-        ref="audio"
+        ref={this.audio}
         src={music && music.src ? music.src : ''}
         style={{ display: 'none' }} />
     );

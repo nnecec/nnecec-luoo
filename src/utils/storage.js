@@ -11,12 +11,12 @@ export default {
     })
   }),
 
-  set: (key, data) => new Promise((resolve, reject) => {
-    storage.set(key, data, err => {
+  set: (key, params) => new Promise((resolve, reject) => {
+    storage.set(key, params, err => {
       if (err) {
         reject(err)
       } else {
-        resolve(data)
+        resolve(true)
       }
     })
   }),
@@ -29,5 +29,5 @@ export default {
         resolve()
       }
     })
-  })
+  }),
 }

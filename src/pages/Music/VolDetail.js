@@ -13,6 +13,7 @@ import BackButton from '../Shared/BackButton'
 
   // Player
   setPlayList: stores.controllerStore.setPlayList,
+  setMusicSrc: stores.controllerStore.setMusicSrc,
   play: stores.controllerStore.play,
 
   // function
@@ -44,11 +45,11 @@ class VolDetail extends Component {
 
   // 播放期刊列表
   playVol = (id) => {
-    const { volDetail, setPlayList, play } = this.props
+    const { volDetail, setPlayList, play, setMusicSrc } = this.props
 
     setPlayList(volDetail.musicList.slice())
 
-    play(id)
+    setMusicSrc(id) && play()
   }
 
   render() {

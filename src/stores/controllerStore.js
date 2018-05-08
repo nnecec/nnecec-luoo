@@ -15,7 +15,7 @@ class ControllerStore {
    * type - 添加/替换
    */
   @action
-  setPlayList = async (playlist, type = PLAYLIST_PLAY_TYPE.REPLACE) => {
+  setPlayList = (playlist, type = PLAYLIST_PLAY_TYPE.REPLACE) => {
 
     if (type === PLAYLIST_PLAY_TYPE.ADD) {
       this.playlist = this.playlist.concat(playlist)
@@ -24,22 +24,32 @@ class ControllerStore {
     this.playlist = playlist
   }
 
+  @action
+  setMusicSrc = (musicId) => {
+    const music = this.playlist.find(p => p.id === musicId)
+    this.music = music
+    return music
+  }
+
   /**
    * 播放
    */
   @action
-  play = async (musicId) => {
-    const music = this.playlist.find(p => p.id === musicId)
-    this.music = music
+  play = () => {
     this.playing = true
+    ipcRenderer.send('player-status-change', {
+      playing: true
+    });
   }
   /**
    * 暂停
    */
   @action
-  pause = async () => {
-    this.music = {}
+  pause = () => {
     this.playing = false
+    ipcRenderer.send('player-status-change', {
+      playing: false
+    });
   }
 
   /**
@@ -73,7 +83,7 @@ class ControllerStore {
    * 设置进度
    */
   setProgress = (percent) => {
-    
+
   }
 }
 
