@@ -11,7 +11,7 @@ class PlayerStore {
   @observable volume = 0.5
   @observable muted = false
   @observable progress = 0
-  @observable currentTime = 0
+  // @observable currentTime = 0
   @observable duration = 0
 
   @action
@@ -33,14 +33,31 @@ class PlayerStore {
 
   /**
    * 设置播放进度
+   * 
+   * @param currentTime=当前时间(s) duration=总时长(s)
    */
   @action
-  setProgress = (currentTime, duration) => {
-    this.currentTime = currentTime
-    this.duration = duration
-    this.progress = currentTime / duration
+  setProgress = (percent, isSet) => {
+    this.progress = percent
+
+    if (isSet) {
+      ipcRenderer.send('player-progress-change', {
+        percent: percent
+      })
+    }
   }
 
+  @action
+  setDuration = (duration) => {
+    console.log(duration);
+    
+    this.duration = duration
+  }
+
+  @computed
+  get currentTime() {
+    return this.progress * this.duration
+  }
 
 }
 

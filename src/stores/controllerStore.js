@@ -5,7 +5,7 @@ import { ipcRenderer } from 'electron';
 import { PLAYLIST_PLAY_TYPE, PLAY_MODE } from 'utils/constant'
 
 class ControllerStore {
-  @observable playing = false;
+  @observable playing = false; // 是否正在播放
   @observable mode = PLAY_MODE.LOOP;
   @observable playlist = [];
   @observable music = {};
@@ -76,14 +76,6 @@ class ControllerStore {
   @action
   toggle = async () => {
     self.playing = false;
-  }
-
-
-  /**
-   * 设置进度
-   */
-  setProgress = (percent) => {
-
   }
 }
 

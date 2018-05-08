@@ -12,6 +12,7 @@ import { ipcRenderer } from 'electron';
   cut: stores.controllerStore.cut,
   setVolume: stores.playerStore.setVolume,
   setProgress: stores.playerStore.setProgress,
+  setDuration: stores.playerStore.setDuration,
 }))
 @observer
 export default class AudioPlayer extends Component {
@@ -28,7 +29,7 @@ export default class AudioPlayer extends Component {
   }
 
   componentDidMount() {
-    const { music, next, volume, setVolume, setProgress } = this.props
+    const { music, next, volume, setVolume, setProgress, setDuration } = this.props
 
     const audio = this.audio.current
 
@@ -54,23 +55,26 @@ export default class AudioPlayer extends Component {
       const _percent = parseFloat(arg.percent)
       const duration = audio.duration
       const currentTime = _percent * duration
-      setProgress(currentTime, duration);
+      setDuration(duration)
       audio.currentTime = currentTime
+
     })
     audio.volume = volume
   }
 
 
 
-  progress(currentTime = 0) {
-
+  progress(e) {
+    const { setDuration } = this.props
+    const currentTime = e.target.currentTime || 0
+    const duration = e.target.duration || 0
     // 每间隔一秒
     if (currentTime * 1000 - this.interval < 1000) {
       return;
     }
     const { music, setProgress } = this.props
-    const duration = this.audio.current.duration || 0
-    setProgress(currentTime, duration)
+    setProgress(currentTime / duration)
+    setDuration(duration)
 
     this.interval = currentTime * 1000
   }
@@ -101,7 +105,7 @@ export default class AudioPlayer extends Component {
         onProgress={this.buffering}
         onSeeked={this.resetProgress}
         onTimeUpdate={e => {
-          this.progress(e.target.currentTime);
+          this.progress(e);
         }}
         ref={this.audio}
         src={music && music.src ? music.src : ''}
