@@ -2,7 +2,7 @@
 
 A [luoo.net](http://www.luoo.net/) electron unofficial client.
 
-Still in developing...
+completed in development environment...
 
 ## Base
 
@@ -14,5 +14,24 @@ Still in developing...
 - Webpack
 - Electron
 - Axios
+- Anime.js
+- styled-components
 
-All dependencies is up to date
+All dependencies is up to date.
+
+## Screenshots
+
+![sidebar](./screenshots/sidebar.png)
+![vol list](./screenshots/vollist.png)
+![vol detail](./screenshots/voldetail.png)
+![vol detail list](./screenshots/voldetaillist.png)
+
+## Note
+
+[x] view vol && play music
+
+[] pack && release .dmg
+
+[] main page && multiple pages
+
+[] redesign interaction design
