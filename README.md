@@ -29,6 +29,7 @@ All dependencies is up to date.
 ## Note
 
 - [x] view vol && play music
-- [ ] pack && release .dmg
+- [x] pack && release .dmg
 - [ ] main page && multiple pages
 - [ ] redesign interaction design
+- [ ] comprehensive test case
