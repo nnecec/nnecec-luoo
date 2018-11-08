@@ -15,12 +15,17 @@ module.exports = env => {
     },
     externals: [nodeExternals()],
     resolve: {
+      modules: [
+        "node_modules",
+        path.resolve(__dirname, '../src')
+      ],
+      extensions: ['.js', '.json', '.jsx', '.css'],
       alias: {
         env: path.resolve(__dirname, `../config/env_${env}.json`),
         components: path.resolve(__dirname, `../src/components`),
-        api: path.resolve(__dirname, `../src/api`),
-        stores: path.resolve(__dirname, `../src/stores`),
-        utils: path.resolve(__dirname, `../src/utils`),
+        api: path.resolve(__dirname, `src/api`),
+        stores: path.resolve(__dirname, `src/stores`),
+        utils: path.resolve(__dirname, `src/utils`),
       }
     },
     devtool: "source-map",

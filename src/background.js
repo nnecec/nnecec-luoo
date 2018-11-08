@@ -42,7 +42,6 @@ app.on("ready", () => {
     defaultFontSize: 14,
     scrollBounce: true,
     backgroundColor: '#fff',
-    titleBarStyle: 'hidden'
   });
 
   mainWindow.loadURL(
